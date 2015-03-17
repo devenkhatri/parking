@@ -1,7 +1,5 @@
-<!DOCTYPE html>
 <html>
 	<head>	
-		<meta charset="ISO-8859-1">
 		<title>Parking Manager</title>
 		<script type="text/javascript" src="js/libs/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="js/libs/bootstrap.min.js"></script>
@@ -20,8 +18,8 @@
 		
 		.parking {width:65px;height:100px;float:left}
         .parkingrow {clear:both}
-        .table > tbody > tr > td.available {background-color: green}
-        .table > tbody > tr > td.occupied {background-color: red}
+        .table > tbody > tr > td.available {background-color: #00ff00}
+        .table > tbody > tr > td.occupied {background-color: #ff0000}
 		</style>
 		
 		<script>
@@ -33,7 +31,6 @@
             $( document ).ready(function() {
             	 
                 var refreshInterval = GetQueryStringParams('interval');
-                //var refreshInterval = 30;
                 console.log(refreshInterval);                
                 if(refreshInterval!=null && refreshInterval.length>0 && !isNaN(refreshInterval)) {
                     pause = refreshInterval;                    
@@ -65,7 +62,16 @@
             {
             	occupiedSlots = [];
                 //write rest calls here to get all the parked slots
-				var allRunningSensons = ["IN-GJ-GNR-GP-00001","IN-GJ-GNR-GP-00002","IN-GJ-GNR-GP-00003","IN-GJ-GNR-GP-00004"];
+				var allRunningSensons = ["IN-GJ-GNR-GP-00001","IN-GJ-GNR-GP-00002","IN-GJ-GNR-GP-00003","IN-GJ-GNR-GP-00004","IN-GJ-GNR-GP-00005","IN-GJ-GNR-GP-00006",
+				                         "IN-GJ-GNR-GP-00007","IN-GJ-GNR-GP-00008","IN-GJ-GNR-GP-00009","IN-GJ-GNR-GP-00020","IN-GJ-GNR-GP-00021","IN-GJ-GNR-GP-00022",
+				                         "IN-GJ-GNR-GP-00023","IN-GJ-GNR-GP-00024","IN-GJ-GNR-GP-00025","IN-GJ-GNR-GP-00026","IN-GJ-GNR-GP-00027","IN-GJ-GNR-GP-00028",
+				                         "IN-GJ-GNR-GP-00029","IN-GJ-GNR-GP-00030","IN-GJ-GNR-GP-00031","IN-GJ-GNR-GP-00032","IN-GJ-GNR-GP-00033","IN-GJ-GNR-GP-00034",
+				                         "IN-GJ-GNR-GP-00035","IN-GJ-GNR-GP-00036","IN-GJ-GNR-GP-00037","IN-GJ-GNR-GP-00038","IN-GJ-GNR-GP-00039","IN-GJ-GNR-GP-00040",
+				                         "IN-GJ-GNR-GP-00041","IN-GJ-GNR-GP-00042","IN-GJ-GNR-GP-00043","IN-GJ-GNR-GP-00044","IN-GJ-GNR-GP-00045","IN-GJ-GNR-GP-00046",
+				                         "IN-GJ-GNR-GP-00047","IN-GJ-GNR-GP-00048","IN-GJ-GNR-GP-00049","IN-GJ-GNR-GP-00050","IN-GJ-GNR-GP-00051","IN-GJ-GNR-GP-00052",
+				                         "IN-GJ-GNR-GP-00053","IN-GJ-GNR-GP-00054","IN-GJ-GNR-GP-00055","IN-GJ-GNR-GP-00056","IN-GJ-GNR-GP-00057","IN-GJ-GNR-GP-00058",
+				                         "IN-GJ-GNR-GP-00059","IN-GJ-GNR-GP-00060","IN-GJ-GNR-GP-00061","IN-GJ-GNR-GP-00062","IN-GJ-GNR-GP-00063","IN-GJ-GNR-GP-00064",
+				                         "IN-GJ-GNR-GP-00065"];
 				for(var i=0;i<allRunningSensons.length;i++)
 				{
                 	getTCupData(allRunningSensons[i]);
